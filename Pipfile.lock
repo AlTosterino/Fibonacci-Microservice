@@ -1,0 +1,25 @@
+{
+    "_meta": {
+        "hash": {
+            "sha256": "36aba6d3910a566e6a2d63243508c5be16d75c0f9a572a22fa6cb25df31b0896"
+        },
+        "pipfile-spec": 6,
+        "requires": {
+            "python_version": "3.7"
+        },
+        "sources": [
+            {
+                "name": "pypi",
+                "url": "https://pypi.org/simple",
+                "verify_ssl": true
+            }
+        ]
+    },
+    "default": {
+        "fib-microservice": {
+            "editable": true,
+            "path": "."
+        }
+    },
+    "develop": {}
+}
