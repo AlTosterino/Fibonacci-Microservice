@@ -3,10 +3,13 @@ import sys
 import logging
 
 from fib_microservice import __version__
+from fib_microservice.shared.settings import Settings
 
 __author__ = "AlTosterino"
 __copyright__ = "AlTosterino"
 __license__ = "mit"
+
+log = logging.getLogger(__name__)
 
 
 def fib(n):
@@ -25,7 +28,16 @@ def fib(n):
     return a
 
 
-def parse_args(args):
+def main(settings: Settings) -> None:
+    """Main entry point allowing external calls
+
+    Args:
+        settings ([Settings]): Settings object
+    """
+    log.debug("Launched")
+
+
+def parse_args():
     """Parse command line parameters
 
     Args:
@@ -40,27 +52,21 @@ def parse_args(args):
         action="version",
         version="fib_microservice {ver}".format(ver=__version__),
     )
+    parser.add_argument("--debug", help="Debug file", type=str, metavar="Path")
+
     group = parser.add_mutually_exclusive_group(required=True)
-    group.add_argument("-g", "--generator", action="store_true")
+    group.add_argument("-g", "--generator", nargs="?", const=3, type=int)
     group.add_argument("-c", "--consumer", action="store_true")
     group.add_argument("-a", "--api", action="store_true")
-    return parser.parse_args(args)
-
-
-def main(args):
-    """Main entry point allowing external calls
-
-    Args:
-      args ([str]): command line parameter list
-    """
-    args = parse_args(args)
-    print(args)
+    return parser.parse_args()
 
 
 def run():
-    """Entry point for console_scripts
-    """
-    main(sys.argv[1:])
+    """Entry point for console_scripts"""
+    args = parse_args()
+    settings = Settings.from_args()
+    settings.setup_log()
+    main(settings)
 
 
 if __name__ == "__main__":
