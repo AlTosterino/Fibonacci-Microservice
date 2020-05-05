@@ -8,6 +8,7 @@ black = "*"
 
 [packages]
 fib-microservice = {editable = true,path = "."}
+fastapi = "*"
 
 [requires]
 python_version = "3.7"
