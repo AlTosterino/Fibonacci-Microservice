@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/AlTosterino/Fibonacci-Microservice.svg?branch=master)](https://travis-ci.com/AlTosterino/Fibonacci-Microservice)
 ================
 fib_microservice
 ================
