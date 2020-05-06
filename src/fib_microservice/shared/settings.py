@@ -20,15 +20,21 @@ class ApiSettings:
 @attr.s(frozen=True, auto_attribs=True)
 class GeneratorSettings:
     delay: int
+    host: str
     generator: object = attr.ib(default=None)
+    sender: object = attr.ib(default=None)
 
     def __attrs_post_init__(self):
         from fib_microservice.infrastructure.fibonacci_generator.generator import (
             FibonacciGenerator,
         )
+        from fib_microservice.infrastructure.message_broker.sender import Sender
 
         object.__setattr__(
             self, "generator", FibonacciGenerator(settings=self),
+        )
+        object.__setattr__(
+            self, "sender", Sender(settings=self),
         )
 
 
