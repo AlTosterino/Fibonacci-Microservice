@@ -7,7 +7,7 @@ from fib_microservice.shared.settings import GeneratorSettings
 
 @pytest.fixture
 def settings():
-    return GeneratorSettings(delay=0)
+    return GeneratorSettings(delay=0, host="localhost")
 
 
 @pytest.fixture
