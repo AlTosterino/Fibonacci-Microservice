@@ -7,8 +7,8 @@ log = logging.getLogger(__name__)
 
 
 async def main_loop(generator: "FibonacciGenerator") -> None:
-    async for s in generator:
-        print(s)
+    async for num in generator:
+        log.info("Generated: %s", num)
 
 
 def main(settings: "GeneratorSettings") -> None:
