@@ -10,6 +10,7 @@ pytest-asyncio = "*"
 [packages]
 fib-microservice = {editable = true,path = "."}
 fastapi = "*"
+pika = "*"
 
 [requires]
 python_version = "3.7"

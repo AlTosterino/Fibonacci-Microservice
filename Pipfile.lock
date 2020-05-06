@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "5e9254fd35edd07b8d3400fa21f9692f9d1587dcccc95623a59e1e5941767f0f"
+            "sha256": "a5af6b2a9339fd4c9f346bdbc0ae9392ccce84b78ee375e9fdf2bf498ac47557"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -34,6 +34,14 @@
         "fib-microservice": {
             "editable": true,
             "path": "."
+        },
+        "pika": {
+            "hashes": [
+                "sha256:4e1a1a6585a41b2341992ec32aadb7a919d649eb82904fd8e4a4e0871c8cf3af",
+                "sha256:9fa76ba4b65034b878b2b8de90ff8660a59d925b087c5bb88f8fdbb4b64a1dbf"
+            ],
+            "index": "pypi",
+            "version": "==1.1.0"
         },
         "pydantic": {
             "hashes": [
