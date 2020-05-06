@@ -12,4 +12,5 @@ consumer:
 
 # Settings for generator
 generator:
+  host: "localhost"
   delay: 2
