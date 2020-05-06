@@ -3,10 +3,12 @@ from fib_microservice.infrastructure.fibonacci_generator.generator import (
     FibonacciGenerator,
 )
 from fib_microservice.shared.settings import GeneratorSettings
+from unittest.mock import patch
 
 
 @pytest.fixture
-def settings():
+@patch("fib_microservice.infrastructure.message_broker.sender.pika")
+def settings(pika_mock):
     return GeneratorSettings(delay=0, host="localhost")
 
 
