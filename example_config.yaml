@@ -1,0 +1,15 @@
+# Path for debug.log, leave empty if no log is needed
+debug_dirpath: ""
+
+# Settings for API
+api:
+  host: "localhost"
+  port: "80"
+
+# Settings for Consumer
+consumer:
+  host: "localhost"
+
+# Settings for generator
+generator:
+  delay: 2
