@@ -6,7 +6,8 @@ from fib_microservice.infrastructure.message_broker.consumer import ConsumerRepo
 
 
 @pytest.fixture
-def settings():
+@patch("fib_microservice.infrastructure.message_broker.consumer.pika")
+def settings(pika_mock):
     return ConsumerSettings(
         host="localhost", db_repo=MagicMock(spec=SQLRepository), routing_key="fib",
     )
