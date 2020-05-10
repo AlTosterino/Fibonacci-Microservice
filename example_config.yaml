@@ -9,7 +9,19 @@ api:
 # Settings for Consumer
 consumer:
   host: "localhost"
+  routing_key: "fibonacci"
 
 # Settings for generator
 generator:
+  host: "localhost"
+  routing_key: "fibonacci"
   delay: 2
+
+# Settings for database
+database:
+  provider: "postgresql"
+  host: "localhost"
+  port: 5432
+  user: "postgres"
+  password: 1234
+  db: "postgres"

@@ -3,11 +3,19 @@ from fib_microservice.infrastructure.fibonacci_generator.generator import (
     FibonacciGenerator,
 )
 from fib_microservice.shared.settings import GeneratorSettings
+from fib_microservice.infrastructure.database.sql_repository import SQLRepository
+from unittest.mock import patch, MagicMock
 
 
 @pytest.fixture
-def settings():
-    return GeneratorSettings(delay=0)
+@patch("fib_microservice.infrastructure.message_broker.sender.pika")
+def settings(pika_mock):
+    return GeneratorSettings(
+        delay=0,
+        host="localhost",
+        db_repo=MagicMock(spec=SQLRepository),
+        routing_key="fib",
+    )
 
 
 @pytest.fixture
