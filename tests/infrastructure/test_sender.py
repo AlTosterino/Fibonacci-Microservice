@@ -39,6 +39,8 @@ async def test_send_correct_message(pika_mock, settings):
     message = "Sample message"
     sender_repo = SenderRepository(settings)
     sender_repo.channel = Mock()
+    sender_repo.connection = Mock()
+    pika_mock.BlockingConnection = Mock()
     # When
     await sender_repo.send_message(message)
     # Then
