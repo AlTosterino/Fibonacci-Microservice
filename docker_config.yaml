@@ -3,25 +3,25 @@ debug_dirpath: ""
 
 # Settings for API
 api:
-  host: "localhost"
-  port: "80"
+  host: "0.0.0.0"
+  port: "8000"
 
 # Settings for Consumer
 consumer:
-  host: "localhost"
+  host: "rabbit"
   routing_key: "fibonacci"
 
 # Settings for generator
 generator:
-  host: "localhost"
+  host: "rabbit"
   routing_key: "fibonacci"
-  delay: 0.2
+  delay: 2
 
 # Settings for database
 database:
   provider: "postgresql"
-  host: "localhost"
+  host: "database"
   port: 5432
   user: "postgres"
-  password: 1234
+  password: "postgres"
   db: "postgres"

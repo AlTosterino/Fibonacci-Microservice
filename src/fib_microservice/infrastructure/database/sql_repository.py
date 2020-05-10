@@ -1,12 +1,11 @@
 from fib_microservice.interface.database_repository.database import IDatabaseRepository
 
 from sqlalchemy import (
-    BigInteger,
     Column,
     DateTime,
     Integer,
     MetaData,
-    String,
+    Text,
     Table,
     create_engine,
     func,
@@ -36,7 +35,7 @@ class SQLRepository(IDatabaseRepository):
             "numbers",
             meta,
             Column("id", Integer, primary_key=True),
-            Column("num", BigInteger),
+            Column("num", Text),
         )
         meta.create_all(self.engine)
 
@@ -49,7 +48,7 @@ class SQLRepository(IDatabaseRepository):
         result = self.connection.execute(query)
         temp = []
         for row in result:
-            temp.append(row[1])
+            temp.append(int(row[1]))
         return temp[::-1]
 
     def get_all_numbers(self) -> tuple:
