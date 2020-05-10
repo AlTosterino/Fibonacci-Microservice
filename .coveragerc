@@ -2,7 +2,8 @@
 [run]
 branch = True
 source = fib_microservice
-# omit = bad_file.py
+omit =
+    */__init__.py
 
 [paths]
 source =

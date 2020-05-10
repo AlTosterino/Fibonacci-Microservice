@@ -1,0 +1,27 @@
+# Path for debug.log, leave empty if no log is needed
+debug_dirpath: ""
+
+# Settings for API
+api:
+  host: "0.0.0.0"
+  port: "8000"
+
+# Settings for Consumer
+consumer:
+  host: "rabbit"
+  routing_key: "fibonacci"
+
+# Settings for generator
+generator:
+  host: "rabbit"
+  routing_key: "fibonacci"
+  delay: 2
+
+# Settings for database
+database:
+  provider: "postgresql"
+  host: "database"
+  port: 5432
+  user: "postgres"
+  password: "postgres"
+  db: "postgres"
