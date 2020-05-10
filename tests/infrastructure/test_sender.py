@@ -6,7 +6,7 @@ from fib_microservice.infrastructure.message_broker.sender import SenderReposito
 
 
 @pytest.fixture
-@patch("fib_microservice.infrastructure.message_broker.consumer.pika")
+@patch("fib_microservice.infrastructure.message_broker.sender.pika")
 def settings(pika_mock):
     return GeneratorSettings(
         delay=0,
