@@ -3,25 +3,33 @@ debug_dirpath: ""
 
 # Settings for API
 api:
+  # Host that api will bind on
   host: "localhost"
+  # Port that api will bind on
   port: "80"
 
 # Settings for Consumer
 consumer:
+  # Host for rabbitmMQ
   host: "localhost"
+  # Routing key for rabbitMQ
   routing_key: "fibonacci"
 
 # Settings for generator
 generator:
+  # Host for rabbitMQ
   host: "localhost"
+  # Routing key for rabbitMQ
   routing_key: "fibonacci"
-  delay: 0.2
+  # Delay for generating numbers
+  delay: 2
 
 # Settings for database
 database:
   provider: "postgresql"
   host: "localhost"
-  port: 5432
-  user: "postgres"
-  password: 1234
   db: "postgres"
+  user: "postgres"
+  port: 5432
+  password: 1234
+  
