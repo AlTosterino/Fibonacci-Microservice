@@ -6,13 +6,13 @@ from fib_microservice.infrastructure.message_broker.sender import SenderReposito
 
 
 @pytest.fixture
-def settings():
-    return GeneratorSettings(
-        delay=0,
-        host="localhost",
-        db_repo=MagicMock(spec=SQLRepository),
-        routing_key="fib",
-    )
+@patch("fib_microservice.infrastructure.message_broker.sender.pika")
+def settings(pika_mock):
+    sett = MagicMock(spec=GeneratorSettings)
+    sett.delay = 0
+    sett.host = "localhost"
+    sett.routing_key = "fib"
+    return sett
 
 
 @patch("fib_microservice.infrastructure.message_broker.sender.pika")
@@ -31,18 +31,20 @@ def test_should_connect_on_init(pika_mock, settings):
 
 
 @pytest.mark.asyncio
-@patch("fib_microservice.infrastructure.message_broker.sender.pika")
-async def test_send_correct_message(pika_mock, settings):
-    # Given settings
-    message = "Sample message"
-    sender_repo = SenderRepository(settings)
-    sender_repo.channel = Mock()
-    # When
-    await sender_repo.send_message(message)
-    # Then
-    sender_repo.channel.basic_publish.assert_called_once_with(
-        exchange="", routing_key=settings.routing_key, body=message
-    )
+async def test_send_correct_message(settings):
+    with patch(
+        "fib_microservice.infrastructure.message_broker.sender.pika"
+    ) as pika_mock:
+        # Given settings
+        message = "Sample message"
+        sender_repo = SenderRepository(settings)
+        sender_repo.channel = Mock()
+        # When
+        await sender_repo.send_message(message)
+        # Then
+        sender_repo.channel.basic_publish.assert_called_once_with(
+            exchange="", routing_key=settings.routing_key, body=message
+        )
 
 
 @patch("fib_microservice.infrastructure.message_broker.sender.pika")
