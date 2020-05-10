@@ -1,12 +1,18 @@
 from abc import ABC, abstractmethod
 
 
-class ISender(ABC):
+class IConsumer(ABC):
+    """Abstract class for message queue consumer"""
+
     def __init__(self, settings: "Settings"):
         self.settings = settings
 
     @abstractmethod
-    async def send_message(self):
+    async def on_message(self):
+        pass
+
+    @abstractmethod
+    async def listen(self):
         pass
 
     @abstractmethod
