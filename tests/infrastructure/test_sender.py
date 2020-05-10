@@ -13,7 +13,7 @@ def settings(pika_mock):
         host="localhost",
         db_repo=MagicMock(spec=SQLRepository),
         routing_key="fib",
-        sender=MagicMock(sepc=SenderRepository),
+        sender=MagicMock(spec=SenderRepository),
     )
 
 
