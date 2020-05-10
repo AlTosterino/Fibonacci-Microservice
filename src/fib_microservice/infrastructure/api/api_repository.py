@@ -1,6 +1,5 @@
 from fib_microservice.interface.api_repository.api import IAPIRepository
 from fastapi import FastAPI, Depends
-from fastapi_utils.cbv import cbv
 from starlette.endpoints import HTTPEndpoint, HTTPException
 
 from typing import Tuple, Dict
