@@ -4,7 +4,7 @@ import logging
 
 from fib_microservice import __version__
 from fib_microservice.shared.settings import Settings
-from fib_microservice.application.use_cases import generator
+from fib_microservice.application.use_cases import generator, consumer, api
 
 __author__ = "AlTosterino"
 __copyright__ = "AlTosterino"
@@ -61,6 +61,10 @@ def run_consumer() -> None:
     args = parse_args()
     settings = configure_settings(args)
     log.info("Launching consumer")
+    try:
+        consumer.main(settings.consumer)
+    except Exception as e:
+        log.exception(e)
 
 
 def run_api() -> None:
@@ -68,3 +72,7 @@ def run_api() -> None:
     args = parse_args()
     settings = configure_settings(args)
     log.info("Launching api")
+    try:
+        api.main(settings.api)
+    except Exception as e:
+        log.exception(e)
