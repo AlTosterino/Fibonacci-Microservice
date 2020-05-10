@@ -16,11 +16,8 @@ log = logging.getLogger(__name__)
 def parse_args():
     """Parse command line parameters
 
-    Args:
-      args ([str]): command line parameters as list of strings
-
     Returns:
-      :obj:`argparse.Namespace`: command line parameters namespace
+        [{argparse.Namespace}]: command line parameters namespace
     """
     parser = argparse.ArgumentParser(description="Fibonacci microservice")
     parser.add_argument(
@@ -40,6 +37,15 @@ def parse_args():
 
 
 def configure_settings(args: argparse.Namespace) -> Settings:
+    """
+    Method to configure settings from parsed args
+
+    Arguments:
+        args {argparse.Namespace} -- [Command line args]
+
+    Returns:
+        Settings -- [Settings object]
+    """
     settings = Settings.from_yaml(args)
     settings.setup_log()
     return settings

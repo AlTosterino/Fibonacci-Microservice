@@ -30,7 +30,7 @@ class ConsumerRepository(IConsumer):
 
     def on_message(self, ch, method, properties, body) -> None:
         """
-        On message callback
+        Save new number in database
 
         Arguments:
             ch {[pika.adapters.blocking_connection.BlockingChannel]} -- [Channel]

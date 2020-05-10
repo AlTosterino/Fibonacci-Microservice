@@ -12,3 +12,7 @@ class IDatabaseRepository(ABC):  # pragma: no cover
     @abstractmethod
     def save_number(self):
         pass
+
+    @abstractmethod
+    def close(self):
+        pass

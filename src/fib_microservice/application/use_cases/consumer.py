@@ -4,6 +4,12 @@ log = logging.getLogger(__name__)
 
 
 def main(settings: "ConsumerSettings") -> None:
+    """
+    Entrypoint for fib_consumer command
+    
+    Arguments:
+        settings {[Settings]} -- [Settings object]
+    """
     consumer = settings.consumer
     try:
         consumer.listen()

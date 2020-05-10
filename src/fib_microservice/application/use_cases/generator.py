@@ -17,6 +17,12 @@ async def main_loop(
 
 
 def main(settings: "GeneratorSettings") -> None:
+    """
+    Entrypoint for fib_generator command
+    
+    Arguments:
+        settings {[Settings]} -- [Settings object]
+    """
     generator = settings.generator
     sender = settings.sender
     try:
