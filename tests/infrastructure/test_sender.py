@@ -8,13 +8,11 @@ from fib_microservice.infrastructure.message_broker.sender import SenderReposito
 @pytest.fixture
 @patch("fib_microservice.infrastructure.message_broker.sender.pika")
 def settings(pika_mock):
-    return GeneratorSettings(
-        delay=0,
-        host="localhost",
-        db_repo=MagicMock(spec=SQLRepository),
-        routing_key="fib",
-        sender=MagicMock(spec=SenderRepository),
-    )
+    sett = MagicMock(spec=GeneratorSettings)
+    sett.delay = 0
+    sett.host = "localhost"
+    sett.routing_key = "fib"
+    return sett
 
 
 @patch("fib_microservice.infrastructure.message_broker.sender.pika")
