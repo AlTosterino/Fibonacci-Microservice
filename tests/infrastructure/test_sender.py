@@ -31,20 +31,20 @@ def test_should_connect_on_init(pika_mock, settings):
 
 
 @pytest.mark.asyncio
-@patch("fib_microservice.infrastructure.message_broker.sender.pika")
-async def test_send_correct_message(pika_mock, settings):
-    # Given settings
-    message = "Sample message"
-    sender_repo = SenderRepository(settings)
-    sender_repo.channel = Mock()
-    sender_repo.connection = Mock()
-    pika_mock.BlockingConnection = Mock()
-    # When
-    await sender_repo.send_message(message)
-    # Then
-    sender_repo.channel.basic_publish.assert_called_once_with(
-        exchange="", routing_key=settings.routing_key, body=message
-    )
+async def test_send_correct_message(settings):
+    with patch(
+        "fib_microservice.infrastructure.message_broker.sender.pika"
+    ) as pika_mock:
+        # Given settings
+        message = "Sample message"
+        sender_repo = SenderRepository(settings)
+        sender_repo.channel = Mock()
+        # When
+        await sender_repo.send_message(message)
+        # Then
+        sender_repo.channel.basic_publish.assert_called_once_with(
+            exchange="", routing_key=settings.routing_key, body=message
+        )
 
 
 @patch("fib_microservice.infrastructure.message_broker.sender.pika")
