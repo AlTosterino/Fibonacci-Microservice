@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 
-class IConsumer(ABC):
+class IConsumer(ABC):  # pragma: no cover
     """Abstract class for message queue consumer"""
 
     def __init__(self, settings: "Settings"):

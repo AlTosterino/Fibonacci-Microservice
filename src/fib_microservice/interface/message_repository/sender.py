@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 
-class ISender(ABC):
+class ISender(ABC):  # pragma: no cover
     """Abstract class for message queue sender"""
 
     def __init__(self, settings: "Settings"):

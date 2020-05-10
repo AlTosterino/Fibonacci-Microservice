@@ -3,8 +3,6 @@ import asyncio
 from hypercorn.asyncio import serve
 from hypercorn.config import Config
 
-DB_REPO = None
-
 
 def main(settings: "Settings"):
     config = Config()
