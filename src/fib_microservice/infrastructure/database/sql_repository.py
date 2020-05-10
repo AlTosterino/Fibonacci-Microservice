@@ -33,14 +33,12 @@ class SQLRepository(IDatabaseRepository):
         """Method to create numers table and save to database"""
         meta = MetaData()
         self.num_table = Table(
-            "tasks",
+            "numbers",
             meta,
             Column("id", Integer, primary_key=True),
             Column("num", BigInteger),
         )
         meta.create_all(self.engine)
-        query = self.num_table.select()
-        result = self.connection.execute(query)
 
     def save_number(self, number: int):
         query = self.num_table.insert().values(num=number)
