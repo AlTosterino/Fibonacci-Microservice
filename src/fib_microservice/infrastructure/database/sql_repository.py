@@ -51,3 +51,13 @@ class SQLRepository(IDatabaseRepository):
         for row in result:
             temp.append(row[1])
         return temp[::-1]
+
+    def get_all_numbers(self) -> tuple:
+        query = self.num_table.select()
+        result = self.connection.execute(query)
+        return tuple(result)
+
+    def get_number(self, position: int) -> tuple:
+        query = self.num_table.select().where(self.num_table.c.id == position)
+        result = self.connection.execute(query)
+        return tuple(result)

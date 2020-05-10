@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 
-class IDatabaseRepository(ABC):
+class IDatabaseRepository(ABC):  # pragma: no cover
     def __init__(self, settings: "Settings"):
         self.settings = settings
 

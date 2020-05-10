@@ -20,7 +20,6 @@ class SenderRepository(ISender):
     def connect(self) -> None:
         """Connect to RabbitMQ and set channel"""
         log.info("Connecting to: %s", self.settings.host)
-        print(pika)
         self.connection = pika.BlockingConnection(
             pika.ConnectionParameters(self.settings.host)
         )

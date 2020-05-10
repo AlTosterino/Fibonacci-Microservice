@@ -17,6 +17,7 @@ setuptools = "*"
 psycopg2 = "*"
 hypercorn = "*"
 fastapi-utils = "*"
+requests = "*"
 
 [requires]
 python_version = "3.7"
